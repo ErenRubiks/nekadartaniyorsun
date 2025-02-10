@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Tahmin Oyunu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff); /* Renk geçişi ekledik */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .warning {
+            color: red;
+            font-size: 14px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #levelText {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hint-button {
+            background-color: #FF9800;
+            width: auto; /* Buton genişliği otomatik */
+            padding: 10px 20px; /* Yatayda padding ekledik */
+            font-size: 16px;
+            white-space: nowrap; /* Metnin tek satırda kalmasını sağlar */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Taşan metinler için elips kullanılır */
+        }
+
+        .hint-button:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sayıyı Bil, Seviyeyi Atla!</h1>
+        <p id="levelText">1 ile 100 arasında bir sayı tahmin edin:</p>
+        <input type="number" id="guess" min="1" max="100">
+        
+        <div class="button-container">
+            <button onclick="checkGuess()">Tahmin Et</button>
+            <button class="hint-button" onclick="showHint()">İpucu 🎥</button>
+        </div>
+
+        <p id="result"></p>
+        <p id="warning" class="warning"></p>
+    </div>
+
+    <script>
+        let level = 1;
+        let maxNumber = 100;
+        let randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = Number(document.getElementById('guess').value);
+            const resultElement = document.getElementById('result');
+            const guessInput = document.getElementById('guess');
+            const levelText = document.getElementById('levelText');
+            const warningElement = document.getElementById('warning');
+
+            // Geçersiz giriş kontrolü
+            if (userGuess < 1 || userGuess > maxNumber || isNaN(userGuess)) {
+                warningElement.textContent = Lütfen 1 ile ${maxNumber} arasında bir sayı girin.;
+                return;
+            } else {
+                warningElement.textContent = ''; // Uyarıyı temizle
+            }
+
+            attempts++;
+
+            if (userGuess === randomNumber) {
+                resultElement.innerHTML = Tebrikler!<br>${attempts}. denemede doğru sayıyı buldunuz.<br>Bir üst seviyeye geçiyorsunuz!<br>Seviye ${level + 1} başladı!;
+                resultElement.style.color = "green";
+                
+                // Sonraki seviyeye geçiş
+                level++;
+                maxNumber += 20;
+                randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+                attempts = 0;
+
+                // Yeni seviye metni güncelleme
+                levelText.textContent = Seviye ${level}: 1 ile ${maxNumber} arasında bir sayı tahmin edin.;
+            } else if (userGuess > randomNumber) {
+                resultElement.textContent = "Daha küçük bir sayı deneyin.";
+                resultElement.style.color = "red";
+            } else {
+                resultElement.textContent = "Daha büyük bir sayı deneyin.";
+                resultElement.style.color = "red";
+            }
+
+            // Kullanıcının girdiği sayı temizlensin
+            guessInput.value = '';
+        }
+
+        // İpucu gösterme fonksiyonu
+        function showHint() {
+            // Web için ödüllü reklam yerine ipucu gösterme
+            alert('İpucu: Sayı, ' + randomNumber + ' olacak!');
+        }
+    </script>
+
+    <!-- AdMob SDK entegrasyonu (sadece mobil platformlarda) -->
+    <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+
+    <script>
+        // Ödüllü reklam birimi kimliği (AdMob'dan aldığınız ID)
+        const rewardAdUnitId = "ca-app-pub-7117576700821838/4988583313"; // AdMob ID'si
+
+        function loadRewardedAd() {
+            console.log("Ödüllü reklam yükleniyor...");
+        }
+
+        function showRewardedAd() {
+            console.log("Ödüllü reklam gösteriliyor...");
+            // Burada mobil cihazda ödüllü reklam gösterilecektir
+        }
+    </script>
+</body>
+</html>
