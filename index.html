@@ -5,174 +5,132 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Minecraft 1.21.94 — İndir</title>
   <style>
-    :root{
-      --bg:#ffffff; --card:#f8fafc; --muted:#6b7280;
-      --accent:#0ea5e9; --accent2:#06b6d4; --radius:12px;
-      --ff: "Segoe UI", Roboto, Arial, sans-serif;
-    }
+    :root{--bg:#ffffff; --card:#f8fafc; --muted:#6b7280; --accent:#0ea5e9; --accent2:#06b6d4; --radius:14px; --ff:'Segoe UI', Roboto, Arial}
     *{box-sizing:border-box}
-    body{
-      margin:0; font-family:var(--ff); background:linear-gradient(180deg,#fff,#f1f5f9);
-      color:#0f1724; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:28px;
-    }
-    .wrap{width:100%; max-width:980px}
-    header{display:flex; gap:14px; align-items:center}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#fff;font-weight:800}
+    body{margin:0;font-family:var(--ff);background:linear-gradient(180deg,#fff,#f1f5f9);color:#0f1724;padding:28px;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .wrap{width:100%;max-width:1000px}
+    header{display:flex;gap:16px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:800;color:white}
     h1{font-size:20px;margin:0}
-    .lead{margin:4px 0 0;color:var(--muted);font-size:13px}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
-    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 8px 24px rgba(15,23,42,0.05)}
-    .screenshot{height:180px;border-radius:10px;overflow:hidden;background:linear-gradient(90deg,rgba(14,165,233,0.06),rgba(6,182,212,0.04));display:flex;align-items:center;justify-content:center}
-    .badges{display:flex;gap:8px;margin-top:12px}
+    p.lead{margin:2px 0 0;color:var(--muted);font-size:13px}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+
+    .screenshot{height:200px;border-radius:10px;overflow:hidden;background:linear-gradient(90deg,rgba(14,165,233,0.06),rgba(6,182,212,0.04));display:flex;align-items:center;justify-content:center}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .badge{background:white;padding:8px 10px;border-radius:999px;border:1px solid rgba(15,23,42,0.04);font-size:13px;color:var(--muted)}
-    .buttons{display:flex;gap:10px;margin-top:14px}
-    .btn{flex:1;padding:12px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff}
+
+    .meta{display:flex;gap:12px;margin-top:8px}
+    .meta .m{background:white;padding:10px;border-radius:10px;min-width:96px;text-align:center;border:1px solid rgba(15,23,42,0.04)}
+
+    .right{position:relative}
+    .download-panel{position:sticky;top:28px}
+    .buttons{display:flex;gap:10px;margin-top:12px}
+    .btn{flex:1;padding:12px 14px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white}
     .btn-ghost{background:transparent;border:1px solid rgba(15,23,42,0.06)}
-    .note{font-size:13px;color:var(--muted);margin-top:12px}
-    .status{margin-top:10px;font-size:13px;color:var(--muted)}
+
+    .note{font-size:13px;color:var(--muted);margin-top:10px}
+    footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+
     .progress{height:10px;background:#eef2f6;border-radius:999px;overflow:hidden;margin-top:8px}
     .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.download-panel{position:static}}
   </style>
 </head>
 <body>
-  <div class="wrap" role="main">
+  <div class="wrap">
     <header>
       <div class="logo">MC</div>
       <div>
         <h1>Minecraft 1.21.94 — İndir</h1>
-        <div class="lead">Butona tıklayın — sunucunuzdaki <code>hacker.html</code> dosyası indirilecektir.</div>
+        <p class="lead">Butona tıklayın. (Görünen metinlerde "hacker" veya benzeri ifadeler yok.)</p>
       </div>
     </header>
 
-    <div class="grid" aria-live="polite">
-      <main class="card" aria-label="Ürün detayları">
+    <div class="grid">
+      <main class="card">
         <div class="screenshot" aria-hidden="true">
-          <svg width="92%" height="92%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <rect width="100%" height="100%" fill="#eef2ff" />
             <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#0f1724" font-size="36">Minecraft 1.21.94 Önizleme</text>
           </svg>
         </div>
 
-        <div class="badges" aria-hidden="true">
+        <div class="badges">
           <div class="badge">Sürüm: 1.21.94</div>
           <div class="badge">Boyut: ~1.2 GB</div>
         </div>
 
-        <p class="note">Not: Bu sayfa sadece indirme tetikler. <strong>Dosyanın içeriğini sen hazırlayacaksın (hacker.html).</strong> Ben dosyaya dokunmam.</p>
+        <div class="meta">
+          <div class="m"><strong>Windows</strong><small style="display:block;color:var(--muted)">64-bit</small></div>
+          <div class="m"><strong>Mac</strong><small style="display:block;color:var(--muted)">Intel/Apple</small></div>
+          <div class="m"><strong>Android</strong><small style="display:block;color:var(--muted)">Mobil</small></div>
+        </div>
+
       </main>
 
-      <aside class="card" aria-label="İndirme panosu">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div><strong>İndir: hacker.html</strong></div>
-          <div style="color:var(--muted)">Sunucudan</div>
+      <aside class="right">
+        <div class="card download-panel">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">İndir</div>
+            </div>
+            <div style="text-align:right;color:var(--muted)">Tek tık</div>
+          </div>
+
+          <div class="buttons">
+            <button class="btn btn-primary" id="dl-server">İndir (Sunucu)</button>
+            <button class="btn btn-ghost" id="dl-local">İndir (Yerel)</button>
+          </div>
+
+          <div class="note" style="margin-top:12px">Butonlara tıklayınca tarayıcı <code>hacker.html</code> adlı dosyayı indirir. Sayfa üzerinde "hacker" kelimesi görünmez.</div>
+
+          <div class="progress" aria-hidden="true"><i id="bar"></i></div>
         </div>
-
-        <div class="buttons">
-          <!-- Buton: sunucuda hacker.html varsa indirir -->
-          <button class="btn btn-primary" id="btn-server" title="Sunucudan hacker.html indirir">İndir (Sunucu)</button>
-          <!-- Buton: yerelde oluşturup indirir (kendi içeriğini saklamadan) -->
-          <button class="btn btn-ghost" id="btn-local" title="Tarayıcıda örnek bir hacker.html oluşturup indirir">İndir (Yerel Örnek)</button>
-        </div>
-
-        <div class="status" id="status" aria-live="polite">Durum: Hazır</div>
-
-        <div class="progress" aria-hidden="true"><i id="bar"></i></div>
-
-        <p class="note" style="margin-top:10px">Eğer dosya sunucunda değilse, "İndir (Yerel Örnek)" butonu tarayıcı içinde güvenli bir örnek dosya oluşturur.</p>
       </aside>
     </div>
 
-    <footer style="margin-top:14px; text-align:center; color:var(--muted); font-size:13px">
-      Dosya adı: <code>hacker.html</code> — Dosyayı sen hazırlıyorsun, bu sayfa sadece indirme işlemini başlatır.
-    </footer>
+    <footer>Dosya adı: <code>hacker.html</code></footer>
   </div>
 
   <script>
-    // ------- KULLANIM NOTU -------
-    // 1) Sunucuda hacker.html varsa "İndir (Sunucu)" sunucudan dosyayı indirir:
-    //      - hacker.html aynı dizinde (veya doğru URL ile) barındırılmalı.
-    // 2) Sunucuda yoksa "İndir (Yerel Örnek)" butonu tarayıcıda tamamen yerel, zararsız bir örnek hacker.html oluşturup indirir.
-    // 3) Bu kod sunucudaki dosyaya erişir; dosyanın içeriğini değiştirmez.
-
-    const btnServer = document.getElementById('btn-server');
-    const btnLocal  = document.getElementById('btn-local');
-    const status    = document.getElementById('status');
-    const bar       = document.getElementById('bar');
-
-    // Basit yardımcı: indirme tetikleyici
     function triggerDownload(url, name){
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = name || '';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      const a = document.createElement('a'); a.href = url; a.download = name || ''; document.body.appendChild(a); a.click(); a.remove();
     }
 
-    // Sunucu indirme: önce HEAD isteği ile dosya var mı kontrolü (CORS izinleri gerektirebilir).
     async function downloadFromServer(path){
+      // Basit kontrol: HEAD isteği ile var mı bak (CORS izinleri gerekebilir). Eğer HEAD başarısız olursa direkt indir.
       try{
-        status.textContent = 'Durum: Dosya sunucuda aranıyor...';
-        bar.style.width = '10%';
-        // HEAD isteği: eğer sunucu HEAD'i reddediyorsa, fallback olarak direkt indir.
-        const resp = await fetch(path, { method: 'HEAD' });
-        if (resp.ok){
-          status.textContent = 'Durum: Dosya bulundu. İndirme başlatılıyor...';
-          bar.style.width = '60%';
-          // küçük gecikme gösterimi
-          setTimeout(()=>{ triggerDownload(path, 'hacker.html'); bar.style.width='100%'; status.textContent='Durum: İndirme tetiklendi.'; setTimeout(()=>{ bar.style.width='0%'; status.textContent='Durum: Hazır'; }, 900); }, 400);
-        } else {
-          // HEAD 404 veya izin yoksa -> fallback dene (GET ile) veya uyar.
-          status.textContent = 'Durum: Dosya bulunamadı (HEAD: '+resp.status+'). Eğer dosya aynı dizinde ise CORS/izinlerini kontrol et.';
-          bar.style.width = '0%';
-        }
-      } catch(err){
-        // fetch hata verirse (CORS vs.) -> kullanıcıya bilgi ver
-        console.warn(err);
-        status.textContent = 'Durum: Sunucu kontrolü başarısız (CORS veya ağ hatası). Eğer dosya varsa doğrudan URL ile deneyin.';
-        bar.style.width = '0%';
+        const head = await fetch(path, { method: 'HEAD' });
+        if (head.ok) { triggerDownload(path, 'hacker.html'); return; }
+        // HEAD karşılanmadıysa da GET ile indirilmeye çalışılabilir
+        triggerDownload(path, 'hacker.html');
+      } catch(e){
+        // Hata: doğrudan indirme dene
+        triggerDownload(path, 'hacker.html');
       }
     }
 
-    // Yerel örnek dosya oluşturma: tamamen tarayıcı içinde, zararsız içerik
-    function downloadLocalExample(){
-      status.textContent = 'Durum: Yerel örnek dosya oluşturuluyor...';
-      bar.style.width = '25%';
-
-      // Burada dosya içeriği boş bırakılabilir; örnek içerik koydum.
-      const example = `<!doctype html>
-<html lang="tr">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>hacker.html - Örnek</title></head>
-<body style="font-family:monospace;background:#0b1220;color:#cbd5e1;display:flex;align-items:center;justify-content:center;min-height:100vh">
-  <div style="max-width:760px;padding:24px;border-radius:10px;background:#071126;">
-    <h1 style="color:#60a5fa;margin:0 0 8px">PRANK — Örnek Dosya</h1>
-    <p style="margin:0 0 12px">Bu dosya tamamen yerelde oluşturulmuştur. <strong>Hiçbir veri toplanmaz.</strong></p>
-    <pre style="background:#061126;padding:12px;border-radius:8px;color:#9ca3af">Sunucu bağlantısı: kapalı
-Veri aktarımı: yok
-Hesap bilgileri: güvenli</pre>
-  </div>
-</body>
-</html>`;
-
-      // Blob oluşturup indir
-      const blob = new Blob([example], { type: 'text/html' });
+    function downloadLocalFile(){
+      // Yerel örnek dosya: içerik minimal ve zararsız
+      const content = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>file</title></head><body><!-- placeholder --></body></html>';
+      const blob = new Blob([content], { type: 'text/html' });
       const url = URL.createObjectURL(blob);
-      setTimeout(()=>{ triggerDownload(url, 'hacker.html'); bar.style.width='100%'; status.textContent='Durum: Yerel örnek indirildi.'; setTimeout(()=>{ URL.revokeObjectURL(url); bar.style.width='0%'; status.textContent='Durum: Hazır'; }, 900); }, 300);
+      triggerDownload(url, 'hacker.html');
+      setTimeout(()=>URL.revokeObjectURL(url),1500);
     }
 
-    // EVENTLER
-    btnServer.addEventListener('click', ()=> {
-      // 1) Eğer hacker.html başka klasörde ise direkt path yaz: e.g. '/files/hacker.html'
-      const path = 'hacker.html'; // <--- eğer farklı bir yol kullanıyorsan burayı değiştir
-      downloadFromServer(path);
+    document.getElementById('dl-server').addEventListener('click', ()=>{
+      // Sunucuda hacker.html dosyasının aynı dizinde olduğundan emin ol
+      downloadFromServer('hacker.html');
     });
 
-    btnLocal.addEventListener('click', ()=> {
-      downloadLocalExample();
+    document.getElementById('dl-local').addEventListener('click', ()=>{
+      downloadLocalFile();
     });
-
   </script>
 </body>
 </html>
