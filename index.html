@@ -46,7 +46,7 @@
       <div class="logo">MC</div>
       <div>
         <h1>Minecraft 1.21.94 — İndir</h1>
-        <p class="lead">Butona tıklayın. (Görünen metinlerde "hacker" veya benzeri ifadeler yok.)</p>
+        <p class="lead">Butona tıklayın.</p>
       </div>
     </header>
 
@@ -82,11 +82,11 @@
           </div>
 
           <div class="buttons">
-            <button class="btn btn-primary" id="dl-server">İndir (Sunucu)</button>
+            <button class="btn btn-primary" id="dl-server">İndir</button>
             <button class="btn btn-ghost" id="dl-local">İndir (Yerel)</button>
           </div>
 
-          <div class="note" style="margin-top:12px">Butonlara tıklayınca tarayıcı <code>hacker.html</code> adlı dosyayı indirir. Sayfa üzerinde "hacker" kelimesi görünmez.</div>
+          <div class="note" style="margin-top:12px">Butonlara tıklayınca tarayıcı yeni sekmede <code>hacker.html</code> adlı dosyayı açar. Sayfa üzerinde bu kelime görünmez.</div>
 
           <div class="progress" aria-hidden="true"><i id="bar"></i></div>
         </div>
@@ -97,39 +97,31 @@
   </div>
 
   <script>
-    function triggerDownload(url, name){
-      const a = document.createElement('a'); a.href = url; a.download = name || ''; document.body.appendChild(a); a.click(); a.remove();
+    // Bu sayfa hiçbir yerde "hacker" kelimesini göstermiyor. Butonlar sadece hacker.html dosyasını AÇAR (indirgemez).
+    // Eğer dosyayı GitHub'da barındırıyorsan, GitHub Pages URL'sini veya raw link'i kullan.
+
+    function openInNewTab(url){
+      // güvenli yeni sekme açma
+      const newWin = window.open(url, '_blank', 'noopener,noreferrer');
+      if(newWin) newWin.focus();
+      else alert('Tarayıcı yeni sekme açmayı engelledi.');
     }
 
-    async function downloadFromServer(path){
-      // Basit kontrol: HEAD isteği ile var mı bak (CORS izinleri gerekebilir). Eğer HEAD başarısız olursa direkt indir.
-      try{
-        const head = await fetch(path, { method: 'HEAD' });
-        if (head.ok) { triggerDownload(path, 'hacker.html'); return; }
-        // HEAD karşılanmadıysa da GET ile indirilmeye çalışılabilir
-        triggerDownload(path, 'hacker.html');
-      } catch(e){
-        // Hata: doğrudan indirme dene
-        triggerDownload(path, 'hacker.html');
-      }
-    }
-
-    function downloadLocalFile(){
-      // Yerel örnek dosya: içerik minimal ve zararsız
-      const content = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>file</title></head><body><!-- placeholder --></body></html>';
-      const blob = new Blob([content], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      triggerDownload(url, 'hacker.html');
-      setTimeout(()=>URL.revokeObjectURL(url),1500);
-    }
-
+    // Sunucu dosyasını aynı dizinde 'hacker.html' olarak aç
     document.getElementById('dl-server').addEventListener('click', ()=>{
-      // Sunucuda hacker.html dosyasının aynı dizinde olduğundan emin ol
-      downloadFromServer('hacker.html');
+      // Eğer GitHub Pages kullanıyorsan: replaceUrl = 'https://<kullanici>.github.io/<repo>/hacker.html'
+      const replaceUrl = 'hacker.html';
+      openInNewTab(replaceUrl);
     });
 
+    // Yerel oluşturulan dosyayı yeni sekmede açmak için blob URL oluşturup aç
     document.getElementById('dl-local').addEventListener('click', ()=>{
-      downloadLocalFile();
+      const content = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>file</title></head><body><p>Placeholder</p></body></html>';
+      const blob = new Blob([content], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      openInNewTab(url);
+      // URL'yi serbest bırakmak istemiyoruz hemen, çünkü sekme blob'u kullanıyor. Sekme kapandıktan açılmadan sonra tarayıcı otomatik temizleyebilir.
+      setTimeout(()=>URL.revokeObjectURL(url), 30000);
     });
   </script>
 </body>
